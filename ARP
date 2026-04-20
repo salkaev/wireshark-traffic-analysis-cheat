@@ -7,3 +7,5 @@ arp.dst.hw_mac==00:00:00:00:00:00 Hunt: scanning
 arp.duplicate-address-detected or arp.duplicate-address-frame Hunt:Possible poisoning detection
 
 ((arp) && (arp.opcode == 1)) && (arp.src.hw_mac == target-mac-address) Hunt:Possible flooding from detection:
+
+arp.src.proto_ipv4 == 192.168.1.1 sender ip

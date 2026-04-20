@@ -1,0 +1,18 @@
+dhcp.option.dhcp == 3 "DHCP Request"packets contain the hostname information
+
+dhcp.option.dhcp == 5 "DHCP ACK"packets represent the accepted requests
+
+dhcp.option.dhcp == 6 "DHCP NAK"packets represent denied requests
+
+dhcp.option.hostname contains "keyword"  "DHCP Request"options for grabbing the low-hanging fruits:
+
+    Option 12:Hostname.
+    Option 50:Requested IP address.
+    Option 51:Requested IP lease time.
+    Option 61:Client's MAC address.
+
+dhcp.option.domain_name contains "keyword"  "DHCP ACK"options for grabbing the low-hanging fruits:
+
+    Option 15:Domain name.
+    Option 51:Assigned IP lease time.
+

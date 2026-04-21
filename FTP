@@ -1,0 +1,62 @@
+Here are your notes in plain monospaced text (English):
+
+---
+
+WIRESHARK FILTER: FTP
+
+GLOBAL SEARCH
+> ftp
+
+X1X SERIES (Information responses)
+- 211 System status
+- 212 Directory status
+- 213 File status
+
+Filter:
+> ftp.response.code == 211
+
+X2X SERIES (Connection / Modes)
+- 220 Service ready
+- 227 Entering passive mode
+- 228 Long passive mode
+- 229 Extended passive mode
+
+Filter:
+> ftp.response.code == 227
+
+X3X SERIES (Authentication)
+- 230 User login
+- 231 User logout
+- 331 Valid username
+- 430 Invalid username or password
+- 530 No login / invalid password
+
+Filter:
+> ftp.response.code == 230
+
+COMMANDS (Client requests)
+- USER Username
+- PASS Password
+- CWD Current work directory
+- LIST List directory
+
+Filters:
+> ftp.request.command == "USER"
+> ftp.request.command == "PASS"
+> ftp.request.arg == "password"
+
+ADVANCED USAGE (Attack detection)
+
+Brute force - failed logins:
+> ftp.response.code == 530
+
+Brute force - target username:
+> (ftp.response.code == 530) and (ftp.response.arg contains "username")
+
+Password spray - static password:
+> (ftp.request.command == "PASS") and (ftp.request.arg == "password")
+
+NOTE:
+200 = Command successful
+
+---

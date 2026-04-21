@@ -1,0 +1,24 @@
+http	Show all HTTP traffic (cleartext, request-response, client-server protocol)
+http2	Show HTTP/2 traffic (binary data, multiplexing)
+http.request.method == "GET"	Filter GET requests
+http.request.method == "POST"	Filter POST requests
+http.request	List all HTTP requests
+http.response.code == 200	Successful request
+http.response.code == 401	Unauthorized – login required
+http.response.code == 403	Forbidden – no access
+http.response.code == 404	Not found
+http.response.code == 405	Method not allowed / blocked
+http.response.code == 503	Service unavailable
+http.user_agent	Show User-Agent strings (browser/OS info)
+http.user_agent contains "nmap"	Find security scanners like Nmap, Nikto, Wfuzz, sqlmap
+http.request.uri contains "admin"	Find "admin" in requested URI path
+http.request.full_uri contains "admin"	Search full URI (including query parameters)
+http.server contains "apache"	Show servers running Apache
+http.host contains "keyword"	Filter by hostname (partial match)
+http.host == "keyword"	Exact hostname match
+http.connection == "Keep-Alive"	Filter persistent connections
+data-text-lines contains "keyword"	Search cleartext payload data
+(http.user_agent contains "sqlmap") or (http.user_agent contains "Nmap")	Find pentesting tools in User-Agent
+http.request.method == "POST"	Log4j attacks often start with POST
+ip contains "jndi" or frame contains "jndi"	Find Log4j exploit patterns (jndi:ldap)
+(http.user_agent contains "$") or (http.user_agent contains "==")	Suspicious encoding patterns in User-Agent
